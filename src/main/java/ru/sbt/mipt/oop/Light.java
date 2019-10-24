@@ -1,5 +1,7 @@
 package ru.sbt.mipt.oop;
 
+import java.util.function.Function;
+
 public class Light {
     private boolean isOn;
     private final String id;
@@ -20,4 +22,5 @@ public class Light {
     public void setOn(boolean on) {
         isOn = on;
     }
+
 }
