@@ -14,20 +14,45 @@ public class LightSolution implements EventHandler {
 
     @Override
     public void handleEvent() {
-        if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {
-
-            new LightIterator(smartHome).handleFunction((light,room) -> {
-                if (event.getObjectId().equals(light.getId())) {
-                    if (event.getType() == LIGHT_ON) {
-                        light.setOn(true);
-                        System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned on.");
-                    } else {
-                        light.setOn(false);
-                        System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned off.");
+        Action action = new DeviceAction((objectFirst, objectSeond) -> {
+            if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {
+                if (objectSeond instanceof Room) {
+                    Room room = (Room) objectSeond;
+                    if (objectFirst instanceof Light) {
+                        Light light = (Light) objectFirst;
+                        updateLightState(event, light, room);
                     }
                 }
-                return null;
-            });
+            }
+            return null;
+        });
+        smartHome.execute(action);
+    }
+
+    private void updateLightState(SensorEvent event, Light light, Room room) {
+        if (light.getId().equals(event.getObjectId())) {
+            if (event.getType() == LIGHT_ON) {
+                light.setOn(true);
+                System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned on.");
+            } else {
+                light.setOn(false);
+                System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned off.");
+            }
         }
     }
+//        if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {
+//
+//            new LightIterator(smartHome).handleFunction((light,room) -> {
+//                if (event.getObjectId().equals(light.getId())) {
+//                    if (event.getType() == LIGHT_ON) {
+//                        light.setOn(true);
+//                        System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned on.");
+//                    } else {
+//                        light.setOn(false);
+//                        System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned off.");
+//                    }
+//                }
+//                return null;
+//            });
+//        }
 }

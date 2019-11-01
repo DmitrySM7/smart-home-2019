@@ -16,22 +16,51 @@ public class HallDoorSolution implements EventHandler {
 
     @Override
     public void handleEvent() {
-        if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED) {
-
-            new DoorIterator(smartHome).handleFunction((door,room) -> {
-
-                if (door.getId().equals(event.getObjectId())) {
-                    if (room.getName().equals("hall")) {
-                        new LightIterator(smartHome).handleFunction((light,room_) -> {
-                            light.setOn(false);
-                            SensorCommand command = new SensorCommand(CommandType.LIGHT_OFF, light.getId());
-                            Sender.sendCommand(command);
-                            return null;
-                        });
+        Action action = new DeviceAction((objectFirst, objectSecond) -> {
+            if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED) {
+                if (objectFirst instanceof Door) {
+                    Door door = (Door) objectFirst;
+                    if (door.getId().equals(event.getObjectId())) {
+                        if (event.getType() == DOOR_CLOSED) {
+                            if (objectSecond instanceof Room) {
+                                Room room = (Room) objectSecond;
+                                if (room.getName().equals("hall")) {
+                                    Action newAction = new DeviceAction((objectFirst_, objectSecond_) -> {
+                                        if (objectFirst_ instanceof Light) {
+                                            Light light = (Light) objectFirst_;
+                                            light.setOn(false);
+                                            SensorCommand command = new SensorCommand(CommandType.LIGHT_OFF, light.getId());
+                                            Sender.sendCommand(command);
+                                        }
+                                        return null;
+                                    });
+                                    room.execute(newAction);
+                                }
+                            }
+                        }
                     }
                 }
-                return null;
-            });
-        }
+            }
+            return null;
+        });
+        smartHome.execute(action);
     }
+
+//        if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED) {
+//
+//            new DoorIterator(smartHome).handleFunction((door,room) -> {
+//
+//                if (door.getId().equals(event.getObjectId())) {
+//                    if (room.getName().equals("hall")) {
+//                        new LightIterator(smartHome).handleFunction((light,room_) -> {
+//                            light.setOn(false);
+//                            SensorCommand command = new SensorCommand(CommandType.LIGHT_OFF, light.getId());
+//                            Sender.sendCommand(command);
+//                            return null;
+//                        });
+//                    }
+//                }
+//                return null;
+//            });
+//        }
 }

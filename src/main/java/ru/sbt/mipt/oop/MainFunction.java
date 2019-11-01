@@ -22,6 +22,6 @@ public class MainFunction {
                 alarm.changeState(new ActivationState(), "Qwerty123");
             }
         }
-        return SensorEvent.getNextSensorEvent();
+        return new NextSensorEvent().getNextSensorEvent();
     }
 }
