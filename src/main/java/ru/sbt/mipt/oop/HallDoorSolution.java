@@ -1,5 +1,7 @@
 package ru.sbt.mipt.oop;
 
+import com.coolcompany.smarthome.events.EventHandler;
+
 import static ru.sbt.mipt.oop.SensorEventType.*;
 
 public class HallDoorSolution implements EventHandler {

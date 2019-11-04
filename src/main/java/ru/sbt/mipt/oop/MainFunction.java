@@ -4,6 +4,7 @@ import ru.sbt.mipt.oop.alarm.ActivationState;
 import ru.sbt.mipt.oop.alarm.Alarm;
 import ru.sbt.mipt.oop.alarm.AlarmState;
 import ru.sbt.mipt.oop.alarm.AlarmType;
+import com.coolcompany.smarthome.events.EventHandler;
 
 import java.util.Collection;
 

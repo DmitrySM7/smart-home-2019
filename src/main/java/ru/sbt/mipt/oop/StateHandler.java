@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop;
 
 import ru.sbt.mipt.oop.alarm.Alarm;
-import ru.sbt.mipt.oop.alarm.AlarmType;
+import com.coolcompany.smarthome.events.EventHandler;
 
 import java.util.Collection;
 
@@ -15,6 +15,12 @@ public class StateHandler {
         this.smartHome = smartHome;
         this.alarm = alarm;
     }
+
+    public StateHandler(SmartHome smartHome, Alarm alarm) {
+        this.smartHome = smartHome;
+        this.alarm = alarm;
+    }
+
     public void stateHandle() {
         while (event != null) {
             Collection<EventHandler> eventHandlers = new HandleEventCreator(event, smartHome).handleEventCreate();

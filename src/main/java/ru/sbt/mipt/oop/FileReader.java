@@ -12,6 +12,6 @@ public class FileReader {
         Gson gson = new Gson();
         String json = new String(Files.readAllBytes(Paths.get("smart-home-1.js")));
         SmartHome smartHome = gson.fromJson(json, SmartHome.class);
-        return(smartHome);
+        return smartHome;
     }
 }
