@@ -1,10 +1,10 @@
 package ru.sbt.mipt.oop;
 
+import com.coolcompany.smarthome.events.CCSensorEvent;
 import ru.sbt.mipt.oop.alarm.ActivationState;
 import ru.sbt.mipt.oop.alarm.Alarm;
 import ru.sbt.mipt.oop.alarm.AlarmState;
 import ru.sbt.mipt.oop.alarm.AlarmType;
-import com.coolcompany.smarthome.events.EventHandler;
 
 import java.util.Collection;
 
@@ -13,6 +13,7 @@ public class MainFunction {
         System.out.println("Got event" + event);
         for (EventHandler eventHandler : eventHandlers) {
             if (alarm.getClassAvailability() == AlarmType.OFF) {
+                //CCSensorEvent event_new = (CCSensorEvent) event;
                 eventHandler.handleEvent();
             } else if (alarm.getClassAvailability() == AlarmType.ALARM) {
                 System.out.println("Alarm");

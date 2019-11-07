@@ -2,7 +2,6 @@ package ru.sbt.mipt.oop;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.function.Function;
 
 public class SmartHome implements Actionable {
     Collection<Room> rooms;

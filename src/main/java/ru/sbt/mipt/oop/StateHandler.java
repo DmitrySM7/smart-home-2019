@@ -1,7 +1,6 @@
 package ru.sbt.mipt.oop;
 
 import ru.sbt.mipt.oop.alarm.Alarm;
-import com.coolcompany.smarthome.events.EventHandler;
 
 import java.util.Collection;
 

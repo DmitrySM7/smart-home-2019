@@ -1,6 +1,5 @@
 package ru.sbt.mipt.oop;
 
-import com.coolcompany.smarthome.events.EventHandler;
 
 import java.util.ArrayList;
 import java.util.Collection;
