@@ -1,6 +1,5 @@
 package ru.sbt.mipt.oop;
 
-import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
 
 public class Application {

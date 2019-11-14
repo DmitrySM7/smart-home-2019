@@ -2,7 +2,7 @@ package ru.sbt.mipt.oop;
 
 import java.util.function.Function;
 
-public class Light {
+public class Light implements Actionable{
     private boolean isOn;
     private final String id;
 
@@ -23,4 +23,8 @@ public class Light {
         isOn = on;
     }
 
+    @Override
+    public void execute(Action action) {
+        action.act(this);
+    }
 }
