@@ -1,7 +1,5 @@
 package ru.sbt.mipt.oop;
 
-import sun.rmi.rmic.Main;
-
 public class StateHandler {
     private SensorEvent event;
     private SmartHome smartHome;
