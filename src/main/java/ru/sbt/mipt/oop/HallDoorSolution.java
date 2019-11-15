@@ -45,22 +45,4 @@ public class HallDoorSolution implements EventHandler {
         });
         smartHome.execute(action);
     }
-
-//        if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED) {
-//
-//            new DoorIterator(smartHome).handleFunction((door,room) -> {
-//
-//                if (door.getId().equals(event.getObjectId())) {
-//                    if (room.getName().equals("hall")) {
-//                        new LightIterator(smartHome).handleFunction((light,room_) -> {
-//                            light.setOn(false);
-//                            SensorCommand command = new SensorCommand(CommandType.LIGHT_OFF, light.getId());
-//                            Sender.sendCommand(command);
-//                            return null;
-//                        });
-//                    }
-//                }
-//                return null;
-//            });
-//        }
 }

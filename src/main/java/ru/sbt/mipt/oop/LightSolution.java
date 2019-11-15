@@ -40,19 +40,4 @@ public class LightSolution implements EventHandler {
             }
         }
     }
-//        if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {
-//
-//            new LightIterator(smartHome).handleFunction((light,room) -> {
-//                if (event.getObjectId().equals(light.getId())) {
-//                    if (event.getType() == LIGHT_ON) {
-//                        light.setOn(true);
-//                        System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned on.");
-//                    } else {
-//                        light.setOn(false);
-//                        System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned off.");
-//                    }
-//                }
-//                return null;
-//            });
-//        }
 }

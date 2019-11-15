@@ -39,22 +39,4 @@ public class DoorSolution implements EventHandler {
             }
         }
     }
-
-//        if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED) {
-//
-//            new DoorIterator(smartHome).handleFunction((door, room) -> {
-//
-//                if (door.getId().equals(event.getObjectId())) {
-//                    if (event.getType() == DOOR_OPEN) {
-//                        door.setOpen(true);
-//                        System.out.println("Door " + door.getId() + " in room " + room.getName() + " was opened.");
-//                    } else {
-//                        door.setOpen(false);
-//                        System.out.println("Door " + door.getId() + " in room " + room.getName() + " was closed.");
-//                    }
-//                }
-//                return null;
-//            });
-//        }
-//    }
 }
