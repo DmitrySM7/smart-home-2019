@@ -25,7 +25,6 @@ public class Light implements Actionable{
 
     @Override
     public void execute(Action action) {
-        action.updateComponent(this);
-        action.act();
+        action.act(this);
     }
 }

@@ -14,19 +14,19 @@ public class LightSolution implements EventHandler {
 
     @Override
     public void handleEvent() {
-        Action action = new DeviceAction((objectFirst, objectSeond) -> {
+        smartHome.execute(object -> {
             if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {
-                if (objectSeond instanceof Room) {
-                    Room room = (Room) objectSeond;
-                    if (objectFirst instanceof Light) {
-                        Light light = (Light) objectFirst;
-                        updateLightState(event, light, room);
-                    }
+                if (object instanceof Room) {
+                    Room room = (Room) object;
+                    room.execute(newObject -> {
+                        if (newObject instanceof Light) {
+                            Light light = (Light) newObject;
+                            updateLightState(event, light, room);
+                        }
+                    });
                 }
             }
-            return null;
         });
-        smartHome.execute(action);
     }
 
     private void updateLightState(SensorEvent event, Light light, Room room) {
