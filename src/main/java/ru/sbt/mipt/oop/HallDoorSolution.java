@@ -29,7 +29,7 @@ public class HallDoorSolution implements EventHandler {
                                         if (newObject_light instanceof Light) {
                                             Light light = (Light) newObject_light;
                                             light.setOn(false);
-                                            SensorCommand command = new SensorCommand(CommandType.LIGHT_OFF, light.getId());
+                                            SensorCommand command = new SensorCommand(SensorEventType.LIGHT_OFF, light.getId());
                                             System.out.println("Pretent we're sending command " + command);
                                         }
                                     });

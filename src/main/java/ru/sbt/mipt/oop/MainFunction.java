@@ -1,6 +1,5 @@
 package ru.sbt.mipt.oop;
 
-import ru.sbt.mipt.oop.alarm.ActivationState;
 import ru.sbt.mipt.oop.alarm.Alarm;
 
 import java.util.Collection;
