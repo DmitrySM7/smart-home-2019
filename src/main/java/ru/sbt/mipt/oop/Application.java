@@ -12,7 +12,6 @@ public class Application {
         SmartHome smartHome = FileReader.readHomeFile();
         // начинаем цикл обработки событий
         SensorEvent event = new NextSensorEvent().getNextSensorEvent();
-        Alarm alarm = new Alarm(new DeactivationState(), "Qwerty123");
-        new StateHandler(event, smartHome, alarm).stateHandle();
+        new StateHandler(event, smartHome, new Alarm("Qwerty123")).stateHandle();
     }
 }

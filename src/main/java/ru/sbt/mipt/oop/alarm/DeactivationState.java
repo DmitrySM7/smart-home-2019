@@ -1,20 +1,26 @@
 package ru.sbt.mipt.oop.alarm;
 
-public class DeactivationState implements State {
-    @Override
-    public State act(boolean status, AlarmType type) {
-        if (type.equals(AlarmType.ON) || type.equals(AlarmType.ALARM)) {
-            if (!status) {
-                return new AlarmState();
-            } else {
-                return this;
-            }
-        } else { return this; }
+public class DeactivationState implements AlarmState {
+
+    private Alarm alarm;
+
+    public DeactivationState(Alarm alarm) {
+        this.alarm = alarm;
     }
 
     @Override
-    public AlarmType getClassAvailability() {
-        return AlarmType.OFF;
+    public void activate(String code) {
+        alarm.setCode(code);
+        alarm.changeState(new ActivationState(alarm));
     }
 
+    @Override
+    public void deactivate(String code) {
+    }
+
+    @Override
+    public void danger() {
+        //экстренная кнопка
+        alarm.changeState(new DangerState(alarm));
+    }
 }

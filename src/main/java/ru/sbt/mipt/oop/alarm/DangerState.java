@@ -1,10 +1,10 @@
 package ru.sbt.mipt.oop.alarm;
 
-public class ActivationState implements AlarmState {
+public class DangerState implements AlarmState {
 
     private Alarm alarm;
 
-    public ActivationState(Alarm alarm) {
+    public DangerState(Alarm alarm) {
         this.alarm = alarm;
     }
 
@@ -16,14 +16,10 @@ public class ActivationState implements AlarmState {
     public void deactivate(String code) {
         if (code.equals(alarm.getCode())) {
             alarm.changeState(new DeactivationState(alarm));
-        } else {
-            alarm.changeState(new DangerState(alarm));
         }
     }
 
     @Override
     public void danger() {
-        //экстренная кнопка
-        alarm.changeState(new DangerState(alarm));
     }
 }

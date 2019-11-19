@@ -1,7 +1,6 @@
 package ru.sbt.mipt.oop;
 
 import ru.sbt.mipt.oop.alarm.Alarm;
-import ru.sbt.mipt.oop.alarm.AlarmType;
 
 import java.util.Collection;
 
@@ -18,7 +17,8 @@ public class StateHandler {
     public void stateHandle() {
         while (event != null) {
             Collection<EventHandler> eventHandlers = new HandleEventCreator(event, smartHome).handleEventCreate();
-            event = MainFunction.processing(event,eventHandlers, alarm);
+            new MainFunction(event, eventHandlers, alarm).processing();
+            event = new NextSensorEvent().getNextSensorEvent();
         }
     }
 }
