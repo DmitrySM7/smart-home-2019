@@ -14,9 +14,9 @@ public class HandleEventCreator {
 
     public Collection<EventHandler> handleEventCreate() {
         Collection<EventHandler> handleEvents = new ArrayList<>();
-        handleEvents.add(new LightSolution(event,smartHome));
-        handleEvents.add(new DoorSolution(event,smartHome));
-        handleEvents.add(new HallDoorSolution(event,smartHome));
+        handleEvents.add(new LightSolution(smartHome));
+        handleEvents.add(new DoorSolution(smartHome));
+        handleEvents.add(new HallDoorSolution(smartHome));
         return handleEvents;
     }
 }

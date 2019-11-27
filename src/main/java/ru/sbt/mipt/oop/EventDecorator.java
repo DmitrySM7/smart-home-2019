@@ -15,9 +15,9 @@ public class EventDecorator implements EventHandler {
     }
 
     @Override
-    public void handleEvent() {
+    public void handleEvent(SensorEvent event) {
         if (alarm.getState() instanceof DeactivationState) {
-            eventHandler.handleEvent();
+            eventHandler.handleEvent(event);
             alarm.activate("Qwerty");
         } else if (alarm.getState() instanceof ActivationState) {
             alarm.danger();

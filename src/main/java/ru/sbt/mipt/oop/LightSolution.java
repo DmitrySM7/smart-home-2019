@@ -4,24 +4,22 @@ import static ru.sbt.mipt.oop.SensorEventType.*;
 
 public class LightSolution implements EventHandler {
 
-    private SensorEvent event;
     private SmartHome smartHome;
 
-    public LightSolution(SensorEvent event, SmartHome smartHome) {
-        this.event = event;
+    public LightSolution(SmartHome smartHome) {
         this.smartHome = smartHome;
     }
 
     @Override
-    public void handleEvent() {
+    public void handleEvent(SensorEvent event) {
         smartHome.execute(object -> {
-            if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {
+            if (event instanceof LightSensorEvent) {
                 if (object instanceof Room) {
                     Room room = (Room) object;
                     room.execute(newObject -> {
                         if (newObject instanceof Light) {
                             Light light = (Light) newObject;
-                            updateLightState(event, light, room);
+                            updateLightState((LightSensorEvent) event, light, room);
                         }
                     });
                 }
@@ -29,13 +27,13 @@ public class LightSolution implements EventHandler {
         });
     }
 
-    private void updateLightState(SensorEvent event, Light light, Room room) {
+    private void updateLightState(LightSensorEvent event, Light light, Room room) {
         if (light.getId().equals(event.getObjectId())) {
-            if (event.getType() == LIGHT_ON) {
-                light.setOn(true);
+            if (event.getType() == LightEventType.LIGHT_OFF) {
+                light.setStatus(true);
                 System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned on.");
             } else {
-                light.setOn(false);
+                light.setStatus(false);
                 System.out.println("Light " + light.getId() + " in room " + room.getName() + " was turned off.");
             }
         }
