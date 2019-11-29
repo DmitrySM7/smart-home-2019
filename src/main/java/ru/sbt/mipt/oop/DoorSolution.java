@@ -29,10 +29,10 @@ public class DoorSolution implements EventHandler {
     private void updateDoorState (DoorSensorEvent event, Door door, Room room){
         if (door.getId().equals(event.getObjectId())) {
             if (event.getType() == DoorEventType.DOOR_OPEN) {
-                door.setOpen(true);
+                door.setStatus(true);
                 System.out.println("Door " + door.getId() + " in room " + room.getName() + " was opened.");
             } else {
-                door.setOpen(false);
+                door.setStatus(false);
                 System.out.println("Door " + door.getId() + " in room " + room.getName() + " was closed.");
             }
         }

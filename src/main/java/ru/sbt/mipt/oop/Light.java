@@ -2,7 +2,8 @@ package ru.sbt.mipt.oop;
 
 import java.util.function.Function;
 
-public class Light implements Actionable{
+public class Light implements Actionable {
+
     private final String id;
     private boolean status;
 
@@ -11,7 +12,6 @@ public class Light implements Actionable{
         this.status = isOn;
     }
 
-
     public String getId() {
         return id;
     }
@@ -19,7 +19,6 @@ public class Light implements Actionable{
     public boolean getStatus() {
         return status;
     }
-
 
     public void setStatus(boolean status) {
         this.status = status;
