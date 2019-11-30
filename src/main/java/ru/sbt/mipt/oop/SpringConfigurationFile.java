@@ -1,6 +1,7 @@
 package ru.sbt.mipt.oop;
 
 import coolcompany.smarthome.events.SensorEventsManager;
+import org.springframework.context.annotation.Import;
 import ru.sbt.mipt.oop.adapter.*;
 import ru.sbt.mipt.oop.alarm.Alarm;
 import ru.sbt.mipt.oop.FileReader;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Collection;
 
 @Configuration
+@Import(RC_ConfigurationFile.class)
 public class SpringConfigurationFile {
     @Bean
     SensorEventsManager sensorEventsManager(EventHandler eventProcessor, CCSensorEventConverter ccSensorEventConverter){
