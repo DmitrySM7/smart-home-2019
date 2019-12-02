@@ -1,19 +1,29 @@
 package ru.sbt.mipt.oop;
 
-public class Door {
+public class Door implements Actionable {
     private final String id;
-    private boolean isOpen;
+    // this field show current status of the door (closed/open)
+    private boolean status;
 
-    public Door(boolean isOpen, String id) {
-        this.isOpen = isOpen;
+    public Door(boolean status, String id) {
+        this.status = status;
         this.id = id;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getId() {
         return id;
     }
 
-    public void setOpen(boolean open) {
-        isOpen = open;
+    @Override
+    public void execute(Action action) {
+        action.act(this);
     }
 }
